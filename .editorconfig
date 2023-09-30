@@ -1,0 +1,118 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{csproj,json,xml,cshtml}]
+indent_size = 2
+
+[*.cs]
+file_header_template = Copyright (c) 2023 Conrad Hale
+dotnet_sort_system_directives_first = true
+csharp_style_namespace_declarations = file_scoped:warning
+dotnet_analyzer_diagnostic.category-roslynator.severity = warning
+
+# Blank lines
+roslynator_blank_line_between_single_line_accessors = false
+roslynator_blank_line_between_closing_brace_and_switch_section = false
+roslynator_blank_line_between_using_directives = never
+roslynator_blank_line_after_file_scoped_namespace_declaration = true
+
+# Expressions and braces
+roslynator_accessor_braces_style = single_line_when_statement_is_on_single_line
+roslynator_block_braces_style = single_line_when_empty
+roslynator_body_style = expression
+roslynator_use_block_body_when_declaration_spans_over_multiple_lines = false
+roslynator_use_block_body_when_expression_spans_over_multiple_lines = false
+
+# Operator new lines
+roslynator_binary_operator_new_line = after
+roslynator_conditional_operator_new_line = after
+roslynator_arrow_token_new_line = after
+roslynator_equals_token_new_line = after
+roslynator_null_conditional_operator_new_line = before
+
+# Instantiation and parentheses styles
+roslynator_accessibility_modifiers = explicit
+roslynator_array_creation_type_style = implicit_when_type_is_obvious
+roslynator_object_creation_parentheses_style = omit
+roslynator_conditional_operator_condition_parentheses_style = omit_when_condition_is_single_token
+roslynator_object_creation_type_style = implicit_when_type_is_obvious
+
+# Other styles
+roslynator_null_check_style = pattern_matching
+roslynator_use_anonymous_function_or_method_group = method_group
+roslynator_trailing_comma_style = omit
+
+dotnet_diagnostic.RCS0001.severity = warning
+dotnet_diagnostic.RCS0003.severity = warning
+dotnet_diagnostic.RCS0004.severity = warning
+dotnet_diagnostic.RCS0006.severity = warning
+dotnet_diagnostic.RCS0008.severity = warning
+dotnet_diagnostic.RCS0009.severity = warning
+dotnet_diagnostic.RCS0010.severity = warning
+dotnet_diagnostic.RCS0011.severity = warning
+dotnet_diagnostic.RCS0013.severity = warning
+dotnet_diagnostic.RCS0015.severity = warning
+dotnet_diagnostic.RCS0016.severity = warning
+dotnet_diagnostic.RCS0020.severity = warning
+dotnet_diagnostic.RCS0021.severity = warning
+dotnet_diagnostic.RCS0023.severity = warning
+dotnet_diagnostic.RCS0024.severity = warning
+dotnet_diagnostic.RCS0025.severity = warning
+dotnet_diagnostic.RCS0027.severity = warning
+dotnet_diagnostic.RCS0028.severity = warning
+dotnet_diagnostic.RCS0031.severity = warning
+dotnet_diagnostic.RCS0032.severity = warning
+dotnet_diagnostic.RCS0033.severity = warning
+dotnet_diagnostic.RCS0039.severity = warning
+dotnet_diagnostic.RCS0041.severity = warning
+dotnet_diagnostic.RCS0042.severity = warning
+dotnet_diagnostic.RCS0046.severity = warning
+dotnet_diagnostic.RCS0048.severity = silent
+dotnet_diagnostic.RCS0049.severity = warning
+dotnet_diagnostic.RCS0050.severity = warning
+dotnet_diagnostic.RCS0051.severity = warning
+dotnet_diagnostic.RCS0052.severity = warning
+dotnet_diagnostic.RCS0053.severity = warning
+dotnet_diagnostic.RCS0054.severity = warning
+dotnet_diagnostic.RCS0055.severity = warning
+dotnet_diagnostic.RCS0056.severity = warning
+dotnet_diagnostic.RCS0057.severity = warning
+dotnet_diagnostic.RCS0058.severity = warning
+dotnet_diagnostic.RCS0059.severity = warning
+dotnet_diagnostic.RCS0060.severity = warning
+dotnet_diagnostic.RCS1002.severity = silent
+dotnet_diagnostic.RCS1004.severity = warning
+dotnet_diagnostic.RCS1008.severity = warning
+dotnet_diagnostic.RCS1010.severity = warning
+dotnet_diagnostic.RCS1013.severity = warning
+dotnet_diagnostic.RCS1014.severity = warning
+dotnet_diagnostic.RCS1016.severity = warning
+dotnet_diagnostic.RCS1018.severity = warning
+dotnet_diagnostic.RCS1019.severity = warning
+dotnet_diagnostic.RCS1050.severity = warning
+dotnet_diagnostic.RCS1051.severity = warning
+dotnet_diagnostic.RCS1078.severity = warning
+dotnet_diagnostic.RCS1079.severity = warning
+dotnet_diagnostic.RCS1080.severity = warning
+dotnet_diagnostic.RCS1081.severity = warning
+dotnet_diagnostic.RCS1090.severity = warning
+dotnet_diagnostic.RCS1094.severity = warning
+dotnet_diagnostic.RCS1096.severity = warning
+dotnet_diagnostic.RCS1126.severity = warning
+dotnet_diagnostic.RCS1162.severity = warning
+dotnet_diagnostic.RCS1207.severity = warning
+dotnet_diagnostic.RCS1231.severity = warning
+dotnet_diagnostic.RCS1248.severity = warning
+dotnet_diagnostic.RCS1250.severity = warning
+dotnet_diagnostic.RCS1252.severity = warning
+dotnet_diagnostic.RCS1253.severity = warning
+dotnet_diagnostic.RCS1260.severity = warning

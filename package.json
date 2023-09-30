@@ -1,0 +1,42 @@
+{
+  "name": "movielist",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^5.0.0",
+    "@types/bootstrap": "^5.2.7",
+    "@types/postcss-flexbugs-fixes": "^5.0.1",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
+    "eslint": "^8.50.0",
+    "glob": "^10.3.10",
+    "npm-run-all2": "^6.0.6",
+    "postcss": "^8.4.31",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^9.1.4",
+    "prettier": "^3.0.3",
+    "rollup": "^3.29.4",
+    "sass": "^1.67.0",
+    "stylelint": "^15.10.3",
+    "stylelint-config-standard-scss": "^11.0.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "run-p --continue-on-error \"lint:*\"",
+    "lint:prettier": "prettier . --check --cache",
+    "lint:eslint": "eslint . --cache --max-warnings=0 --ext=ts",
+    "lint:stylelint": "stylelint --cache \"**/*.scss\"",
+    "fix": "run-s \"fix:*\"",
+    "fix:prettier": "npm run lint:prettier -- --write",
+    "fix:eslint": "npm run lint:eslint -- --fix",
+    "fix:stylelint": "npm run lint:stylelint -- --fix"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.2"
+  }
+}

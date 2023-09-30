@@ -1,0 +1,22 @@
+<!-- Conrad Hale -->
+@using Microsoft.AspNetCore.Http.Features
+
+@{
+  var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
+  var showAlert = !consentFeature?.CanTrack ?? false;
+  var cookieString = consentFeature?.CreateConsentCookie();
+}
+
+@if (showAlert)
+{
+  <div id="cookieAlert" class="alert alert-info fade show d-flex flex-row flex-nowrap justify-content-between g-2"
+    role="alert">
+    <div class="align-self-center text-wrap">
+      This site uses cookies. <a class="alert-link" asp-action="Privacy">Privacy Policy</a>
+    </div>
+    <button type="button" class="btn custom-btn-info ms-3 close align-self-center" data-bs-dismiss="alert"
+      aria-label="Close" data-cookie-string="@cookieString">
+      <span aria-hidden="true">Accept</span>
+    </button>
+  </div>
+}

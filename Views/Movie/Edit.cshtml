@@ -1,0 +1,12 @@
+@model Movie
+
+@{
+  ViewData["Title"] = "Edit Movie";
+}
+
+<form asp-action="Edit" method="post">
+  <partial name="_EditMoviePartial" />
+
+  <button type="submit" class="btn custom-btn-primary">Save</button>
+  <a role="button" asp-controller="Home" asp-action="Index" class="btn custom-btn-alt">Cancel</a>
+</form>

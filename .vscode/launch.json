@@ -1,0 +1,41 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "coreclr",
+      "preLaunchTask": "build",
+      "request": "launch",
+      "name": "Run app (Development)",
+      "launchSettingsProfile": "Development",
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "program": "${workspaceFolder}/bin/Debug/net7.0/MovieList.dll"
+    },
+    {
+      "type": "coreclr",
+      "preLaunchTask": "build",
+      "request": "launch",
+      "name": "Run app (Staging)",
+      "launchSettingsProfile": "Staging",
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "program": "${workspaceFolder}/bin/Debug/net7.0/MovieList.dll"
+    },
+    {
+      "type": "coreclr",
+      "preLaunchTask": "build",
+      "request": "launch",
+      "name": "Run app (Production)",
+      "launchSettingsProfile": "Production",
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "program": "${workspaceFolder}/bin/Debug/net7.0/MovieList.dll"
+    }
+  ]
+}

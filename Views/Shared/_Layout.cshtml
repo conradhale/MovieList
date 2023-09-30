@@ -1,0 +1,32 @@
+﻿<!-- Conrad Hale -->
+<!DOCTYPE html>
+<html class="h-100">
+
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <title>Movie List - @ViewData["Title"]</title>
+  <link rel="stylesheet" vite-href="~/main.ts" asp-append-version="true" />
+</head>
+
+<body class="d-flex flex-column h-100">
+  <main class="flex-shrink-0 py-4 gy-5 container">
+    <partial name="_CookieAlertPartial" />
+    <header class="mb-4">
+      <h1 class="display-4 mb-2">@ViewData["Title"]</h1>
+    </header>
+    <div class="mb-4">
+      @RenderBody()
+    </div>
+  </main>
+  <footer class="footer mt-auto py-3 bg-body-secondary border-top">
+    <div class="container">
+      <p>&copy; 2023 Conrad Hale &bull; Web Server Application Development Assignment 1</p>
+      <a asp-action="Privacy">Privacy</a>
+    </div>
+  </footer>
+
+  <script type="module" vite-src="~/main.ts"></script>
+  @await RenderSectionAsync("Scripts", false)
+</body>
+
+</html>

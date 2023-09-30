@@ -1,0 +1,22 @@
+// Copyright (c) 2023 Conrad Hale
+
+@import './variables';
+@import './custom_bootstrap';
+
+@each $name,
+    $color in ('primary': $primary, 'alt': $secondary, 'danger': $danger)
+{
+    .custom-btn-#{$name} {
+        @include button-outline-variant(
+            $color,
+            $active-background: lighten($color, 10%)
+        );
+    }
+}
+
+.custom-btn-info {
+    @include button-outline-variant(
+        darken($info, 5%),
+        $active-background: lighten($info, 5%)
+    );
+}
