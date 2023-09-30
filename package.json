@@ -5,6 +5,7 @@
   "type": "module",
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^5.0.0",
+    "@popperjs/core": "^2.11.8",
     "@types/bootstrap": "^5.2.7",
     "@types/postcss-flexbugs-fixes": "^5.0.1",
     "@typescript-eslint/eslint-plugin": "^6.7.2",

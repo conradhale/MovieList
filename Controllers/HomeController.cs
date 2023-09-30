@@ -19,10 +19,6 @@ public class HomeController : Controller
     public IActionResult Privacy() => View();
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error() =>
-        View(new ErrorViewModel(Activity.Current?.Id ?? HttpContext.TraceIdentifier, null));
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error(int statusCode) =>
+    public IActionResult Error(int? statusCode) =>
         View(new ErrorViewModel(Activity.Current?.Id ?? HttpContext.TraceIdentifier, statusCode));
 }

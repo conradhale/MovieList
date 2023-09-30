@@ -14,7 +14,7 @@ const setupConfirmDeleteModal = (modal: Element) => {
             modalBody.innerHTML = `Are you sure you want to delete <span class="fw-semibold">${movie} (${year})</span>?`
         }
 
-        const confirmButton = modal.querySelector('#confirmButton')
+        const confirmButton = modal.querySelector('#confirm-button')
 
         const deleteURL = button?.getAttribute('data-url')
 

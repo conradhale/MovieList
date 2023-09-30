@@ -20,12 +20,14 @@ builder.Services.Configure<CookiePolicyOptions>(
     }
 );
 
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
 if (!builder.Environment.IsDevelopment())
 {
     builder.Services.AddHttpsRedirection(options =>
         options.RedirectStatusCode = StatusCodes.Status308PermanentRedirect);
+}
+else
+{
+    builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 }
 
 WebApplication app = builder.Build();

@@ -1,22 +1,58 @@
 // Copyright (c) 2023 Conrad Hale
 
-@import './variables';
 @import './custom_bootstrap';
 
-@each $name,
-    $color in ('primary': $primary, 'alt': $secondary, 'danger': $danger)
-{
-    .custom-btn-#{$name} {
-        @include button-outline-variant(
-            $color,
-            $active-background: lighten($color, 10%)
-        );
+#custom-nav {
+    --bs-nav-link-color: var(--bs-secondary-color);
+    --bs-nav-link-hover-color: var(--bs-secondary-color-rgb);
+}
+
+@each $name, $color in ('primary': $primary, 'danger': $danger) {
+    :root,
+    [data-bs-theme='light'] {
+        .custom-btn-#{$name} {
+            @include button-outline-variant(
+                $color,
+                $active-background: lighten($color, 10%)
+            );
+        }
+    }
+
+    :root,
+    [data-bs-theme='dark'] {
+        .custom-btn-#{$name} {
+            @include button-outline-variant(
+                $color,
+                $active-background: darken($color, 10%)
+            );
+        }
     }
 }
 
-.custom-btn-info {
-    @include button-outline-variant(
-        darken($info, 5%),
-        $active-background: lighten($info, 5%)
-    );
+@each $name, $color in ('alt': $secondary, 'info': $info) {
+    :root,
+    [data-bs-theme='light'] {
+        .custom-btn-#{$name} {
+            @include button-outline-variant(
+                darken($color, 5%),
+                $active-background: lighten($color, 5%)
+            );
+        }
+    }
+
+    :root,
+    [data-bs-theme='dark'] {
+        .custom-btn-#{$name} {
+            @include button-outline-variant(
+                $color,
+                $active-background: darken($color, 5%)
+            );
+        }
+    }
+}
+
+.custom-icon {
+    fill: currentcolor;
+    width: 16px;
+    height: 16px;
 }
