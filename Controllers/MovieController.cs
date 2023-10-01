@@ -45,7 +45,8 @@ public class MovieController : Controller
     [HttpDelete]
     public void Delete(int movieId)
     {
-        Context.Movies.Remove(Context.Movies.Find(movieId));
+        Movie movie = Context.Movies.Find(movieId);
+        Context.Movies.Remove(movie);
         Context.SaveChanges();
     }
 }

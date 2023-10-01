@@ -2,30 +2,41 @@
 
 import Modal from 'bootstrap/js/dist/modal'
 
-const setupConfirmDeleteModal = (modal: Element) => {
+const setUpConfirmDelete = () => {
+    const modal = document.querySelector('#confirm-delete')
+
+    if (!modal) {
+        return
+    }
+
+    let deleteURL: string | null | undefined = null
+
     const onShow = (event: Modal.Event) => {
         const button = event.relatedTarget
-
         const modalBody = modal.querySelector<HTMLDivElement>('.modal-body')
 
-        if (modalBody) {
-            const movie = button?.getAttribute('data-movie')
-            const year = button?.getAttribute('data-year')
-            modalBody.innerHTML = `Are you sure you want to delete <span class="fw-semibold">${movie} (${year})</span>?`
+        if (!button || !modalBody) {
+            return
         }
 
-        const confirmButton = modal.querySelector('#confirm-button')
+        deleteURL = button?.getAttribute('data-url')
 
-        const deleteURL = button?.getAttribute('data-url')
-
-        if (deleteURL)
-            confirmButton?.addEventListener('click', () =>
-                fetch(deleteURL, { method: 'DELETE' }).then(() =>
-                    location.replace(location.href)
-                )
-            )
+        const movie = button?.getAttribute('data-movie')
+        const year = button?.getAttribute('data-year')
+        modalBody.innerHTML = `Are you sure you want to delete <span class="fw-semibold">${movie} (${year})</span>?`
     }
+
     modal.addEventListener('show.bs.modal', onShow)
+
+    const confirmButton =
+        modal.querySelector<HTMLButtonElement>('#confirm-button')
+
+    confirmButton?.addEventListener('click', async () => {
+        if (deleteURL) {
+            const reload = () => location.replace(location.href)
+            await fetch(deleteURL, { method: 'DELETE' }).finally(reload)
+        }
+    })
 }
 
-export default setupConfirmDeleteModal
+export default setUpConfirmDelete

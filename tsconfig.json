@@ -22,5 +22,5 @@
     "noImplicitAny": true,
     "noImplicitThis": true
   },
-  "include": ["src", "vite.config.ts"]
+  "include": ["src", "vite.config.ts", "postcss.config.cjs"]
 }

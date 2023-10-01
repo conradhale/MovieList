@@ -8,10 +8,6 @@ import path from 'node:path'
 import appsettings from './appsettings.json'
 import appsettingsDev from './appsettings.Development.json'
 
-import purgecss from '@fullhuman/postcss-purgecss'
-import postcssFlexbugsFixes from 'postcss-flexbugs-fixes'
-import postcssPresetEnv from 'postcss-preset-env'
-
 const certificateName = process.env.npm_package_name
 
 const baseFolder = process.env.APPDATA
@@ -54,36 +50,12 @@ export default defineConfig(async () => {
             emptyOutDir: true,
             outDir: '../wwwroot',
             assetsDir: 'assets',
-            sourcemap: 'inline',
             rollupOptions: {
                 input: 'src/main.ts',
                 output: {
                     entryFileNames: 'js/[name].[hash].js',
                     chunkFileNames: 'js/[name]-chunk.js'
                 }
-            }
-        },
-        css: {
-            postcss: {
-                plugins: [
-                    postcssFlexbugsFixes,
-                    postcssPresetEnv({
-                        autoprefixer: { flexbox: 'no-2009' },
-                        stage: 3,
-                        features: { 'custom-properties': false }
-                    }),
-                    purgecss({
-                        content: ['./Views/**/*.cshtml', './src/*.ts'],
-                        variables: true,
-                        keyframes: true,
-                        safelist: {
-                            standard: ['html', 'body'],
-                            deep: [/^col/, /^modal/]
-                        },
-                        defaultExtractor: (content) =>
-                            content.match(/[\w-/:]+(?<!:)/g) || []
-                    })
-                ]
             }
         },
         server: {

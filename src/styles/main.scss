@@ -1,6 +1,6 @@
 // Copyright (c) 2023 Conrad Hale
 
-@import './custom_bootstrap';
+@import './bs_imports';
 
 #custom-nav {
     --bs-nav-link-color: var(--bs-secondary-color);
@@ -44,7 +44,7 @@
     [data-bs-theme='dark'] {
         .custom-btn-#{$name} {
             @include button-outline-variant(
-                $color,
+                lighten($color, 5%),
                 $active-background: darken($color, 5%)
             );
         }

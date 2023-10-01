@@ -3,6 +3,18 @@
 // Based on https://getbootstrap.com/docs/5.3/customize/color-modes/#javascript
 // Licensed under the Creative Commons Attribution 3.0 Unported License.
 
+const prefDarkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+
+const getThemePref = (): string =>
+    localStorage.getItem('theme') ??
+    (prefDarkMediaQuery.matches ? 'dark' : 'light')
+
+const setTheme = (theme: string) => {
+    if (theme === 'auto') theme = prefDarkMediaQuery.matches ? 'dark' : 'light'
+
+    document.documentElement.setAttribute('data-bs-theme', theme)
+}
+
 const showActiveTheme = (theme: string, focus: boolean = false) => {
     const themeSwitcher = document.querySelector('#theme-switcher')
 
@@ -45,40 +57,43 @@ const showActiveTheme = (theme: string, focus: boolean = false) => {
     }
 }
 
-const setupThemeSwitcher = () => {
-    const prefDarkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+const onThemeChange = () => {
+    const storedTheme = localStorage.getItem('theme')
+    if (!storedTheme || storedTheme == 'auto') {
+        setTheme(getThemePref())
+    }
+}
 
-    const getThemePref = (): string =>
-        localStorage.getItem('theme') ??
-        (prefDarkMediaQuery.matches ? 'dark' : 'light')
+const onClicked = (event: MouseEvent) => {
+    const button = event.currentTarget as HTMLButtonElement | null
+    const theme = button?.getAttribute('data-theme-pref')
 
-    const setTheme = (theme: string) => {
-        if (theme === 'auto')
-            theme = prefDarkMediaQuery.matches ? 'dark' : 'light'
-
-        document.documentElement.setAttribute('data-bs-theme', theme)
+    if (!theme) {
+        return
     }
 
-    const onThemeChange = () => {
-        const storedTheme = localStorage.getItem('theme')
-        if (!storedTheme || storedTheme == 'auto') {
-            setTheme(getThemePref())
-        }
+    localStorage.setItem('theme', theme)
+    setTheme(theme)
+    showActiveTheme(theme, true)
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    setTheme(getThemePref())
+
+    prefDarkMediaQuery.addEventListener('change', onThemeChange)
+
+    showActiveTheme(getThemePref())
+
+    const toggles = document.querySelectorAll<HTMLButtonElement>(
+        'button[data-theme-pref]'
+    )
+
+    for (const toggle of toggles) {
+        toggle.addEventListener('click', onClicked)
     }
+})
 
-    const onClicked = (event: MouseEvent) => {
-        const button = event.currentTarget as HTMLButtonElement | null
-        const theme = button?.getAttribute('data-theme-pref')
-
-        if (!theme) {
-            return
-        }
-
-        localStorage.setItem('theme', theme)
-        setTheme(theme)
-        showActiveTheme(theme, true)
-    }
-
+const setUpThemeSwitcher = () => {
     setTheme(getThemePref())
 
     prefDarkMediaQuery.addEventListener('change', onThemeChange)
@@ -94,4 +109,4 @@ const setupThemeSwitcher = () => {
     }
 }
 
-export default setupThemeSwitcher
+export default setUpThemeSwitcher
