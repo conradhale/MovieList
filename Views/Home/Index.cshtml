@@ -26,7 +26,7 @@
           <td>
             <div class="d-flex flex-row flex-wrap gap-2">
               <a role="button" class="flex-fill btn custom-btn-alt" asp-controller="Movie" asp-action="Edit"
-                asp-route-id="@movie.MovieId">Edit</a>
+                asp-route-id="@movie.MovieId" asp-route-slug="@movie.Slug">Edit</a>
               <button type="button" class="flex-fill btn custom-btn-danger delete-btn" data-bs-toggle="modal"
                 data-bs-target="#confirm-delete" data-movie="@movie.Name" data-year="@movie.Year"
                 data-url="@Url.Action("Delete", "Movie", new { movieId = movie.MovieId })">Delete</button>

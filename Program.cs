@@ -12,6 +12,12 @@ builder.Services.AddViteServices();
 builder.Services.AddDbContext<MovieListContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MovieListContext")));
 
+builder.Services.AddRouting(options =>
+{
+    options.LowercaseUrls = true;
+    options.AppendTrailingSlash = true;
+});
+
 builder.Services.Configure<CookiePolicyOptions>(
     options =>
     {
@@ -64,6 +70,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}/{slug?}");
 
 app.Run();
